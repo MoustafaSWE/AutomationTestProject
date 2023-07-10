@@ -25,11 +25,11 @@ public class OpenBrowserTestNGMethod {
     public void openBrowser (){
 
 
-        WebElement drop = driver.findElement(By.);
+        WebElement drop = driver.findElement(By.xpath("//a[@href=\"/dropdown\"]"));
         drop.click();
 
 
-        Select list = new Select(.....);
+        Select list = new Select(driver.findElement(By.id("dropdown")));
         list.selectByValue("1");
 
     }

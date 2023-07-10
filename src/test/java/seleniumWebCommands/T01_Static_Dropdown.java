@@ -13,14 +13,16 @@ import java.time.Duration;
 
 public class T01_Static_Dropdown {
 
-//    Static dropdown list:	dropdowns having tagName "Select"
+    //    Static dropdown list:	dropdowns having tagName "Select"
 //    Dynamic dropdown list:	dropdowns having different tagName other than "Select"
 //    Don't apply Thread.sleep -> it is for you to see the execution ; remove it once you learn the script's purpose
-
     WebDriver driver;
+
 
     @BeforeMethod
     public void openBrowser() {
+
+
         //1- Define Bridge
         // 2- Create new object from chromedriver
         driver = new ChromeDriver();
@@ -42,35 +44,45 @@ public class T01_Static_Dropdown {
     @Test
     public void StaticDropdown() throws InterruptedException {
 
-        // 1- Define webEelement for the list
-        WebElement list = driver.findElement(By.id("dropdown"));
+//        // 1- Define webEelement for the list
+//        WebElement list = driver.findElement(By.id("dropdown"));
+//
+//        // 2- Create new object from Select class in selenium
+//        //you should make sure about this >> import org.openqa.selenium.support.ui.Select;
+//        Select droplist = new Select(list);
+//
+//        //3- Select options using 3 methods
+//        //3.1- SelectByIndex
+//        Thread.sleep(2000);
+//        droplist.selectByIndex(1);
+//
+//        Thread.sleep(2000);
+//        droplist.selectByIndex(2);
+//
+//        //3.2- SelectByValue
+//        //Note SelectByValue input value is String but SelectByIndex is Integer
+//        Thread.sleep(2000);
+//        droplist.selectByValue("1");
+//
+//        Thread.sleep(2000);
+//        droplist.selectByValue("2");
+//
+//        //3.3- SelectByVisibleText
+//        Thread.sleep(2000);
+//        droplist.selectByVisibleText("Option 1");
+//
+//        Thread.sleep(2000);
+//        droplist.selectByVisibleText("Option 2");
 
-        // 2- Create new object from Select class in selenium
-        //you should make sure about this >> import org.openqa.selenium.support.ui.Select;
-        Select droplist = new Select(list);
 
-        //3- Select options using 3 methods
-        //3.1- SelectByIndex
-        Thread.sleep(2000);
-        droplist.selectByIndex(1);
+        Select select = new Select(driver.findElement(By.id("dropdown")));
 
-        Thread.sleep(2000);
-        droplist.selectByIndex(2);
-
-        //3.2- SelectByValue
-        //Note SelectByValue input value is String but SelectByIndex is Integer
-        Thread.sleep(2000);
-        droplist.selectByValue("1");
-
-        Thread.sleep(2000);
-        droplist.selectByValue("2");
-
-        //3.3- SelectByVisibleText
-        Thread.sleep(2000);
-        droplist.selectByVisibleText("Option 1");
-
-        Thread.sleep(2000);
-        droplist.selectByVisibleText("Option 2");
+        // select by index -- value -- visible text
+        select.selectByIndex(1);
+        Thread.sleep(3000);
+        select.selectByValue("2");
+        Thread.sleep(3000);
+        select.selectByVisibleText("Option 1");
 
     }
 

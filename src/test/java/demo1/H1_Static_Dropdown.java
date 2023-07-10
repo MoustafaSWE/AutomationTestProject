@@ -23,7 +23,7 @@ public class H1_Static_Dropdown {
 
     @Test
     public void staticDropdown() {
-        WebElement list = driver.findElement(By.cssSelector("//button[contains(text(),'Search')]"));
+        WebElement list = driver.findElement(By.cssSelector("//a[contains(text(),'Dropdown')]"));
         list.click();
 
     }

@@ -1,6 +1,7 @@
 package demo;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterMethod;
@@ -15,14 +16,16 @@ public class Dropdown {
     public void openbrowser(){
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("https://the-internet.herokuapp.com/dropdown");
+        driver.get("https://the-internet.herokuapp.com/");
 
     }
 
     @Test
     public void selectOption(){
-        Select select = new Select(driver.findElement(By.id("dropdown")));
-        select.selectByValue("2");
+        WebElement dropdownpage = driver.findElement(By.xpath("//*[@id=\"content\"]/ul/li[11]/a"));
+        dropdownpage.click();
+        Select option2 = new Select(driver.findElement(By.id("dropdown")));
+        option2.selectByValue("2");
     }
 
     @AfterMethod

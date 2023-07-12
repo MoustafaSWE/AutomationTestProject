@@ -28,15 +28,15 @@ public class Assertion {
     public void invalid_login (){
 
         // user name
-        WebElement username = driver.findElement(By.xpath("//*[@id=\"user-name\"]"));
+        WebElement username = driver.findElement(By.id("user-name"));
         username.sendKeys("locked_out_user");
 
         // password
-        WebElement password = driver.findElement(By.xpath("//*[@id=\"password\"]"));
+        WebElement password = driver.findElement(By.id("password"));
         password.sendKeys("secret_sauce");
 
         //login
-        WebElement login_button = driver.findElement(By.xpath("//*[@id=\"login-button\"]"));
+        WebElement login_button = driver.findElement(By.id("login-button"));
         login_button.click();
     }
 

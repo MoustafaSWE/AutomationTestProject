@@ -32,7 +32,6 @@ public class T01_Static_Dropdown {
         //3.2- Set implicit wait
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-
         // 4- Navigate to website
         driver.get("https://the-internet.herokuapp.com/dropdown");
 

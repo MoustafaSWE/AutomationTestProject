@@ -1,8 +1,10 @@
 package assertionDemo;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.devtools.v85.indexeddb.model.Key;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -20,30 +22,23 @@ public class AssertionTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        driver.get("https://the-internet.herokuapp.com/abtest");
+        driver.get("https://www.saucedemo.com/");
     }
 
-    @Test
-    public void test02 (){
-        System.out.println("A B C\n D E F");
-    }
 
     @Test
-    public void test01 (){
+    public void test01 () throws Exception{
 
-        Assert.assertEquals( driver.getCurrentUrl() , "https://the-internet.herokuapp.com/abtest" );
-
-        // A/B Test Variation 1
-
-       // Assert.assertTrue();
-
-        String text = "Also known as split testing";
-
-        String expectedText = driver.findElement(By.className("example")).getText();
-
-        Assert.assertTrue(expectedText.contains(text));  // pass
-
-
+        driver.findElement(By.id("user-name")).sendKeys("test");
+        Thread.sleep(3000);
+        driver.findElement(By.id("user-name")).clear();
+        Thread.sleep(3000);
+        driver.findElement(By.id("user-name")).sendKeys("stand ard_user");
+        Thread.sleep(3000);
+        driver.findElement(By.id("user-name")).sendKeys(Keys.TAB,"ssss");
+        driver.findElement(By.id("user-name")).sendKeys(Keys.TAB,Keys.TAB,"ssss");
+        Thread.sleep(3000);
+        driver.findElement(By.id("user-name")).sendKeys(Keys.ENTER);
 
     }
 

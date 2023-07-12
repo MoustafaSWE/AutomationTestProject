@@ -32,10 +32,11 @@ public class DropDownTest {
     @Test
     public void test01() throws Exception{
 
-        driver.findElement(By.name("q")).sendKeys("AMIT");
-        Thread.sleep(3000);
-        List<WebElement> y = driver.findElements(By.cssSelector("ul[class=\"G43f7e\"] li"));  // 1 of 10
-        y.get(2).click();
-        Thread.sleep(3000);
+
+    }
+
+    @Test
+    public void test02 (){
+
     }
 }

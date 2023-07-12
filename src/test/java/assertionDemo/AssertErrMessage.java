@@ -24,13 +24,13 @@ public class AssertErrMessage {
     @Test
     public void login(){
 
-        WebElement username = driver.findElement(By.xpath("//*[@id=\"user-name\"]"));
+        WebElement username = driver.findElement(By.id("user-name"));
         username.sendKeys("standard_user");
-        WebElement password = driver.findElement(By.xpath("//*[@id=\"password\"]"));
+        WebElement password = driver.findElement(By.id("password"));
         password.sendKeys("secret");
-        WebElement login_btn =driver.findElement(By.xpath("//*[@id=\"login-button\"]"));
+        WebElement login_btn =driver.findElement(By.id("login-button"));
         login_btn.click();
-        WebElement error = driver.findElement(By.xpath("//*[@id=\"login_button_container\"]/div/form/div[3]/h3"));
+        WebElement error = driver.findElement(By.cssSelector("h3[data-test=\"error\"]"));
 //        System.out.println(error.getText());
         String expectederrmsg = "Epic sadface: Username and password do not match any user in this service";
         Assert.assertEquals(error.getText(), expectederrmsg);

@@ -9,6 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 
@@ -27,18 +28,20 @@ public class AssertionTest {
 
 
     @Test
-    public void test01 () throws Exception{
+    public void test01 () {
 
-        driver.findElement(By.id("user-name")).sendKeys("test");
-        Thread.sleep(3000);
-        driver.findElement(By.id("user-name")).clear();
-        Thread.sleep(3000);
-        driver.findElement(By.id("user-name")).sendKeys("stand ard_user");
-        Thread.sleep(3000);
-        driver.findElement(By.id("user-name")).sendKeys(Keys.TAB,"ssss");
-        driver.findElement(By.id("user-name")).sendKeys(Keys.TAB,Keys.TAB,"ssss");
-        Thread.sleep(3000);
-        driver.findElement(By.id("user-name")).sendKeys(Keys.ENTER);
+        // Assert
+        // SoftAssert
+
+
+
+        Assert.assertEquals(driver.getCurrentUrl(),"https://www.saucedemo.com/");
+        System.out.println("1st assert executed");
+        Assert.assertEquals(driver.getCurrentUrl(),"Https:/www.google.com/");
+        System.out.println("2nd assert executed \nand 2nd assert fail");
+        Assert.assertEquals(driver.getCurrentUrl(),"https://www.saucedemo.com/");
+        System.out.println("3rd assert executed");
+
 
     }
 

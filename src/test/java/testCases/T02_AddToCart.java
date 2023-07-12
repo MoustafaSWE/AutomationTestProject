@@ -62,6 +62,7 @@ public class T02_AddToCart {
         5- Click on "Add to cart" button, for item "Sauce Labs Backpack"
         6- Go to Cart
         7- Assert that the same product found on cart
+        8- Assert that the same Name of the selected product found on cart
          */
 
         driver.findElement(By.id("add-to-cart-sauce-labs-backpack")).click();
@@ -69,13 +70,25 @@ public class T02_AddToCart {
         String priceOfFirstProduct = driver.findElements(By.className("inventory_item_price"))
                 .get(0).getText();
 
+        //line1
+        List<WebElement> products_names = driver.findElements(By.className("inventory_item_name"));
+        String product_name = products_names.get(0).getText();
+
         driver.findElement(By.className("shopping_cart_link")).click();
 
         String priceOfProductInsideCart = driver.findElement(By.className("inventory_item_price"))
                 .getText();
 
+        //line2
+        String product_names_inside_cart = driver.findElement(By.className("inventory_item_price")).getText();
+
+
         Assert.assertEquals(priceOfProductInsideCart,priceOfFirstProduct);
+        //line3
+        Assert.assertEquals (( product_names_inside_cart, product_name);
     }
+
+
 
     @AfterClass
     public void tearDown (){

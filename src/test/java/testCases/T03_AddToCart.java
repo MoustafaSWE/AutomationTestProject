@@ -43,6 +43,11 @@ public class T03_AddToCart {
     @Test(priority = 1)
     public void userLoginWebsite (){
 
+        homepage.username().sendKeys("standard_user");
+
+        homepage.password().sendKeys("secret_sauce");
+
+        homepage.loginButton().click();
 
 
     }
@@ -51,12 +56,26 @@ public class T03_AddToCart {
     public void userAddProductToCart (){
 
 
+        driver.findElement(By.id("add-to-cart-sauce-labs-bolt-t-shirt")).click();
+
+        String NameOfFirstProduct = driver.findElements(By.className("inventory_item_name"))
+                .get(2).getText();
+
+        driver.findElement(By.className("shopping_cart_link")).click();
+
+        String NameOfProductInsideCart = driver.findElement(By.className("inventory_item_name"))
+                .getText();
+
+
+        Assert.assertEquals(NameOfProductInsideCart,NameOfFirstProduct);
+
+
 
     }
 
     @AfterClass
     public void tearDown (){
-        driver.quit();
+       // driver.quit();
     }
 
 }

@@ -22,6 +22,10 @@ public class P01_Homepage {
        return driver.findElement(loginButtonField);
     }
 
+    public void clickOnLoginButton (){
+        driver.findElement(loginButtonField).click();
+    }
+
     public WebElement username (){
         return driver.findElement(userNameField);
     }

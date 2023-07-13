@@ -7,10 +7,13 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import pages.P01_Homepage;
 
 import java.time.Duration;
 
 public class T00_AddToCart {
+    WebDriver driver;
+    P01_Homepage homepage;
 
     /*  -- assert by product name -- assert by product price
     1- Open URL: https://www.saucedemo.com/  *
@@ -22,16 +25,18 @@ public class T00_AddToCart {
     7- Assert that the same product found on cart
     */
 
-    WebDriver driver;
+
 
     @BeforeClass
     public void setUp (){
-        driver = new ChromeDriver();
+        driver = new ChromeDriver();  // Open GoogleChrome Browser
 
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().window().maximize();  // Maximize Browser
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));  // implicit
 
-        driver.get("https://www.saucedemo.com/");
+        driver.get("https://www.saucedemo.com/"); // Open URL
+
+        homepage = new P01_Homepage(driver);
     }
 
     @Test (priority = 1)
@@ -42,12 +47,16 @@ public class T00_AddToCart {
         4- Click on Login button   // Assert that you are logged in
          */
 
-        driver.findElement(By.id("user-name")).sendKeys("standard_user");
-        driver.findElement(By.id("password")).sendKeys("secret_sauce");
-        driver.findElement(By.id("login-button")).click();
+    //    driver.findElement(By.id("user-name")).sendKeys("standard_user");
+    //    driver.findElement(By.id("password")).sendKeys("secret_sauce");
+    //    driver.findElement(By.id("login-button")).click();
 
-        Assert.assertFalse(driver.getCurrentUrl().equals("https://www.saucedemo.com/"));
-        Assert.assertTrue(driver.getCurrentUrl().equals("https://www.saucedemo.com/inventory.html"));
+        homepage.username().sendKeys("standard_user");
+        homepage.password().sendKeys("secret_sauce");
+        homepage.loginButton().click();
+
+        Assert.assertNotEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/");
+        Assert.assertEquals(driver.getCurrentUrl(), "https://www.saucedemo.com/inventory.html");
 
 
     }
@@ -63,7 +72,7 @@ public class T00_AddToCart {
         driver.findElement(By.id("add-to-cart-sauce-labs-backpack")).click();
 
         String priceOfFirstProduct = driver.findElements(By.className("inventory_item_price"))
-                .get(0).getText();
+                .get(0).getText();  // getText() -> value - String " "  -- dataType String
 
         driver.findElement(By.className("shopping_cart_link")).click();
 
